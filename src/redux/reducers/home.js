@@ -4,8 +4,7 @@ import {
   PRODUCTS_FETCHED,
   PRODUCTS_LOADING
 } from "../actions/types";
-import make_slug from "../helpers/make_slug";
-import _ from "lodash";
+import select_category from "../helpers/select_category";
 
 const initialState = {
   categories: { list: [], loading: false, loaded: false },
@@ -20,7 +19,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         route: action.payload.location.pathname,
-        currentCategory: selectCategory(
+        currentCategory: select_category(
           state.categories.list,
           action.payload.location.pathname
         )
@@ -48,17 +47,9 @@ export default (state = initialState, action) => {
           loaded: true,
           list: action.payload
         },
-        currentCategory: selectCategory(action.payload, state.route)
+        currentCategory: select_category(action.payload, state.route)
       };
     default:
       return state;
   }
 };
-
-function selectCategory(categories, slug) {
-  const category = _.find(categories, cat => {
-    return "/" + make_slug(cat.title) === slug;
-  });
-  if (category) return category;
-  return null;
-}

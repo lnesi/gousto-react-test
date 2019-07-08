@@ -6,6 +6,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import CategoriesListing from "../components/CategoriesListing";
 import ProductListing from "../components/ProductListing";
+import filter_products from "../redux/helpers/filter_products";
 
 class Home extends Component {
   componentDidMount() {
@@ -37,7 +38,7 @@ class Home extends Component {
               <h3>Products</h3>
               <ProductListing
                 loading={this.props.products.loading}
-                list={filterProducts(
+                list={filter_products(
                   this.props.products.list,
                   this.props.currentCategory
                 )}
@@ -49,16 +50,7 @@ class Home extends Component {
     );
   }
 }
-function filterProducts(product_list, category) {
-  if (!category) return product_list;
-  return product_list.filter(item => {
-    return (
-      item.categories.find(cat => {
-        return cat.id === category.id;
-      }) !== undefined
-    );
-  });
-}
+
 const mapStateToProps = ({ home }) => {
   return { ...home };
 };
