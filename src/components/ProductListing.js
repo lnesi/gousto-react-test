@@ -1,7 +1,22 @@
-import React from 'react';
+import React from "react";
+import Preloader from "./Preloader";
+import ProductTile from "./ProductTile";
 
-const ProductListing = ()=>{
-  return (<div className="ProductListing">ProductListing</div>)
-}
-
+const ProductListing = props => {
+  if (props.loading) {
+    return (
+      <div className="ProductListing">
+        <Preloader />
+      </div>
+    );
+  } else {
+    return (
+      <div className="ProductListing row">
+          {props.list.map(product => (
+            <ProductTile {...product} key={product.id} />
+          ))}
+      </div>
+    );
+  }
+};
 export default ProductListing;

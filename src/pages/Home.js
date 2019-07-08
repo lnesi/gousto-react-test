@@ -1,39 +1,53 @@
-import React from "react";
+import React, { Component } from "react";
 import { push } from "connected-react-router";
+import { fetchCategories } from "../redux/actions/categories";
+import { fetchProducts } from "../redux/actions/products";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 import CategoriesListing from "../components/CategoriesListing";
 import ProductListing from "../components/ProductListing";
 
-const Home = props => (
-  <div>
-    <h1 className="title">Welcome to Gousto React Coding Test</h1>
-    <p>
-      <button onClick={() => props.changePage()}>
-        Go to About page via router
-      </button>
-    </p>
-    <div className="container">
-      <div className="row">
-        <div className="col-sm-4">
-          <CategoriesListing categories={props.categories} />
-        </div>
-        <div className="col-sm-8">
-          <ProductListing products={props.products} />
+class Home extends Component {
+  componentDidMount() {
+    if (this.props.categories.loaded === false) this.props.fetchCategories();
+    if (this.props.products.loaded === false) this.props.fetchProducts();
+  }
+  render() {
+    return (
+      <div>
+        <h1 className="title">Welcome to Gousto React Coding Test</h1>
+        <p>
+          <button onClick={() => this.props.changePage()}>
+            Go to About page via router
+          </button>
+        </p>
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-sm-4 col-lg-3 col-xl-2">
+              <h3>Categories</h3>
+              <CategoriesListing {...this.props.categories} />
+            </div>
+            <div className="col-sm-8 col-lg-9 col-xl-10">
+              <h3>Products</h3>
+              <ProductListing {...this.props.products} />
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 const mapStateToProps = ({ home }) => {
-  return { categories: home.categories, products: home.categories };
+  return { ...home };
 };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      changePage: () => push("/about-us")
+      changePage: () => push("/about-us"),
+      fetchCategories,
+      fetchProducts
     },
     dispatch
   );
