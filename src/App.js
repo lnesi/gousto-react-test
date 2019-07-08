@@ -8,9 +8,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <header className="navBar">
-          <Link to="/">Home</Link>
-          <Link to="/about-us">About</Link>
+        <header className="navbar navbar-expand-lg  navbar-dark bg-dark">
+          <ul class="navbar-nav mr-auto ">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/about-us" className="nav-link">About</Link>
+            </li>
+          </ul>
         </header>
 
         <main>
