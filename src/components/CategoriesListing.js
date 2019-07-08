@@ -1,6 +1,7 @@
 import React from "react";
 import Preloader from "./Preloader";
-
+import make_slug from "../redux/helpers/make_slug";
+import { Link } from "react-router-dom";
 const CategoriesListing = props => {
   if (props.loading) {
     return (
@@ -11,18 +12,23 @@ const CategoriesListing = props => {
   } else {
     return (
       <div className="CategoriesListing">
-        <ul className="list-group">
+        <div className="list-group">
           {props.list.map(category => (
-            <li
+            <Link
+              to={make_slug(category.title)}
               key={category.id}
-              className="list-group-item list-group-item-action"
+              className={
+                "list-group-item list-group-item-action " +
+                (props.current && props.current.id === category.id
+                  ? "active"
+                  : "")
+              }
               style={{ cursor: "pointer" }}
-              role="link"
             >
               {category.title}
-            </li>
+            </Link>
           ))}
-        </ul>
+        </div>
       </div>
     );
   }

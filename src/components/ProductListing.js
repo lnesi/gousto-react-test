@@ -12,9 +12,9 @@ const ProductListing = props => {
   } else {
     return (
       <div className="ProductListing row">
-          {props.list.map(product => (
-            <ProductTile {...product} key={product.id} />
-          ))}
+        {props.list.map(product => {
+          return <ProductTile {...product} key={product.id} />;
+        })}
       </div>
     );
   }

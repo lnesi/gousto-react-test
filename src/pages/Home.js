@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { push } from "connected-react-router";
-import { fetchCategories } from "../redux/actions/categories";
+import {
+  fetchCategories,
+  selectCategoryById
+} from "../redux/actions/categories";
 import { fetchProducts } from "../redux/actions/products";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -25,11 +28,23 @@ class Home extends Component {
           <div className="row">
             <div className="col-sm-4 col-lg-3 col-xl-2">
               <h3>Categories</h3>
-              <CategoriesListing {...this.props.categories} />
+              <CategoriesListing
+                {...this.props.categories}
+                current={this.props.currentCategory}
+              />
             </div>
-            <div className="col-sm-8 col-lg-9 col-xl-10">
+            <div
+              className="col-
+            sm-8 col-lg-9 col-xl-10"
+            >
               <h3>Products</h3>
-              <ProductListing {...this.props.products} />
+              <ProductListing
+                loading={this.props.products.loading}
+                list={filterProducts(
+                  this.props.products.list,
+                  this.props.currentCategory
+                )}
+              />
             </div>
           </div>
         </div>
@@ -37,7 +52,16 @@ class Home extends Component {
     );
   }
 }
-
+function filterProducts(product_list, category) {
+  if (!category) return product_list;
+  return product_list.filter(item => {
+    return (
+      item.categories.find(cat => {
+        return cat.id === category.id;
+      }) !== undefined
+    );
+  });
+}
 const mapStateToProps = ({ home }) => {
   return { ...home };
 };
@@ -47,6 +71,7 @@ const mapDispatchToProps = dispatch =>
     {
       changePage: () => push("/about-us"),
       fetchCategories,
+      selectCategoryById,
       fetchProducts
     },
     dispatch
