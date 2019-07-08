@@ -1,7 +1,4 @@
 import fetch from "cross-fetch";
-import _ from "lodash";
-import make_slug from "../helpers/make_slug";
-import { push } from "connected-react-router";
 import { CATEGORIES_FETCHED, CATEGORIES_LOADING } from "./types";
 
 export function fetchCategories() {
