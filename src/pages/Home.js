@@ -31,10 +31,7 @@ class Home extends Component {
                 current={this.props.currentCategory}
               />
             </div>
-            <div
-              className="col-
-            sm-8 col-lg-9 col-xl-10"
-            >
+            <div className="col-sm-8 col-lg-9 col-xl-10">
               <h3>Products</h3>
               <ProductListing
                 loading={this.props.products.loading}
