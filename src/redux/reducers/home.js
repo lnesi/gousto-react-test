@@ -1,7 +1,6 @@
 import {
   CATEGORIES_FETCHED,
   CATEGORIES_LOADING,
-  CATEGORIES_SELECT,
   PRODUCTS_FETCHED,
   PRODUCTS_LOADING
 } from "../actions/types";
@@ -50,11 +49,6 @@ export default (state = initialState, action) => {
           list: action.payload
         },
         currentCategory: selectCategory(action.payload, state.route)
-      };
-    case CATEGORIES_SELECT:
-      return {
-        ...state,
-        currentCategory: action.payload
       };
     default:
       return state;

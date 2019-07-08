@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import { push } from "connected-react-router";
-import {
-  fetchCategories,
-  selectCategoryById
-} from "../redux/actions/categories";
+import { fetchCategories } from "../redux/actions/categories";
 import { fetchProducts } from "../redux/actions/products";
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -71,7 +68,6 @@ const mapDispatchToProps = dispatch =>
     {
       changePage: () => push("/about-us"),
       fetchCategories,
-      selectCategoryById,
       fetchProducts
     },
     dispatch
