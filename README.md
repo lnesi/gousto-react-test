@@ -13,12 +13,40 @@ https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojj
 ## Application structure
 ![Front End Architecture](./guosto_test_fe_atch.jpg)
 
-## A list of missing functional requirements
+## Tests
+```
 
+CategoriesListing
+  ✓ Renders without crashing the conrrect Block Element (.CategoriesListing) (1ms)
+  AC
+    ✓ renders a list (12ms)
+    ✓ renders the correct amount of entries (4ms)
+    ✓ renders the correct content (5ms)
+    ✓ renders the correct link (2ms)
+
+ProductListing
+  ✓ Renders without crashing the conrrect Block Element (.ProductListing) (5ms)
+  AC
+    ✓ renders the correct amount of ProductTiles (35ms)
+    ✓ handles no results  (8ms)
+
+ProductTile
+  ✓ Renders without crashing the conrrect Block Element (.ProductTile) (6ms)
+  AC
+    ✓ has a image  (36ms)
+    ✓ has a title  (7ms)
+    ✓ has a description  (7ms)
+    ✓ has a price  (3ms)
+    ✓ is description hidden (3ms)
+    ✓ click on title will show description (7ms)
+
+
+
+```
 
 ## Possible improvements/ functionality
-- Integration tests
-- AC validated on automated selenium tests
+- AC test around pages
+- AC test end to end (selenium, webdriver)
 - API pagination
 - Image lazy loading on enter view port.
 - Import Bootstrap from npm

@@ -11,8 +11,11 @@
     "precommit": "pretty-quick --staged"
   },
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
     "prettier": "1.16.4",
-    "react-scripts": "^2.1.5"
+    "react-scripts": "^2.1.5",
+    "react-test-renderer": "^16.8.6"
   },
   "dependencies": {
     "connected-react-router": "^4.5.0",
