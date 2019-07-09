@@ -18,8 +18,8 @@ const ProductTile = props => {
           >
             {props.title}
           </h5>
-          {open && <p class="card-text">{props.description}</p>}
-          <p class="card-text"><small class="text-muted">Price</small> &pound;{props.list_price}</p>
+          {open && <p className="card-text">{props.description}</p>}
+          <p className="card-text"><small className="text-muted">Price</small> &pound;{props.list_price}</p>
         </div>
       </div>
     </div>

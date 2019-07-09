@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <header className="navbar navbar-expand-lg  navbar-dark bg-dark">
-          <ul class="navbar-nav mr-auto ">
+          <ul className="navbar-nav mr-auto ">
             <li className="nav-item">
               <Link to="/" className="nav-link">Home</Link>
             </li>

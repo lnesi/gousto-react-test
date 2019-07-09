@@ -23,6 +23,7 @@ https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojj
 - Image lazy loading on enter view port.
 - Import Bootstrap from npm
 - Create a Proxy server for API to remove cors issues on local development.
+- Use CSS grid for card layout
 
 ---
 # Original Requirements:

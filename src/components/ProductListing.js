@@ -9,7 +9,7 @@ const ProductListing = props => {
         <Preloader />
       </div>
     );
-  } else {
+  } else if (props.list.length > 0) {
     return (
       <div className="ProductListing row">
         {props.list.map(product => {
@@ -17,6 +17,8 @@ const ProductListing = props => {
         })}
       </div>
     );
+  } else {
+    return <div className="ProductListing">No product results found.</div>;
   }
 };
 export default ProductListing;
