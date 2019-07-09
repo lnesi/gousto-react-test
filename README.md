@@ -1,8 +1,14 @@
 # Gousto coding test
 
 ## How to use
-* `yarn start` - starting the app in dev mode
+#### Starting the app in dev mode
+```
+ yarn start
+```
+
 Enable cors domain extension in chrome to allow API communication.
+https://chrome.google.com/webstore/detail/moesif-orign-cors-changer/digfbfaphojjndkpccljibejjbppifbc
+
 
 ## Application structure
 ![Front End Architecture](./guosto_test_fe_atch.jpg)
