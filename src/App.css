@@ -5,3 +5,7 @@
   color: #f6323e;
   font-family: Comfortaa,Helvetica,sans-serif;
 }
+
+.hidden{
+	display:none;
+}
